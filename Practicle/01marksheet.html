@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>marksheet</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        border: 2px solid black;
+        margin: 50px auto;
+        height: auto;
+        width: 600px;
+        padding: 30px;
+        text-align: center;
+      }
+      h1 {
+        text-align: center;
+      }
+      .box1 {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 40px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 30px 0px 40px;
+      }
+      .total {
+        display: flex;
+        justify-content: space-between;
+      }
+      #add,
+      #percentage,
+      #grade {
+        border: 2px solid black;
+        padding: 20px 0px;
+        width: 130px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Marksheet</h1>
+      <div class="box1">
+        <h4>English</h4>
+        <input type="number" name="box1" id="box1" />
+      </div>
+
+      <div class="box1">
+        <h4>Maths</h4>
+        <input type="number" name="box2" id="box2" />
+      </div>
+
+      <div class="box1">
+        <h4>Science</h4>
+        <input type="number" name="box3" id="box3" />
+      </div>
+
+      <div class="box1">
+        <h4>Social science</h4>
+        <input type="number" name="box4" id="box4" />
+      </div>
+
+      <button onclick="marksheet()">Result</button>
+
+      <div class="total">
+        <div id="add"></div>
+        <div id="percentage"></div>
+        <div id="grade"></div>
+      </div>
+    </div>
+
+    <script>
+      function marksheet() {
+        let box1 = Number(document.getElementById("box1").value);
+        let box2 = Number(document.getElementById("box2").value);
+        let box3 = Number(document.getElementById("box3").value);
+        let box4 = Number(document.getElementById("box4").value);
+
+        let total = box1 + box2 + box3 + box4;
+        document.getElementById("add").innerHTML = total;
+
+        let percentage = (total / 400) * 100;
+        document.getElementById("percentage").innerHTML = percentage;
+
+        if (percentage >= 100) {
+          document.getElementById("grade").innerHTML =
+            "Please enter valid marks";
+        } else if (percentage >= 80) {
+          document.getElementById("grade").innerHTML = "Grade A";
+        } else if (percentage >= 60) {
+          document.getElementById("grade").innerHTML = "Grade B";
+        } else if (percentage >= 45) {
+          document.getElementById("grade").innerHTML = "Grade C";
+        } else {
+          document.getElementById("grade").innerHTML = "You are fail";
+        }
+      }
+    </script>
+  </body>
+</html>
